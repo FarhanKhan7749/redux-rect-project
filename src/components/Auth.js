@@ -1,6 +1,14 @@
+import { useDispatch } from 'react-redux';
 import classes from './Auth.module.css';
-
+import { authAction } from '../store/index';
 const Auth = () => {
+  const dispatch = useDispatch();
+
+  const loginhnadler = (event) => {
+    event.preventDefault();
+    dispatch(authAction.login())
+  };
+
   return (
     <main className={classes.auth}>
       <section>
@@ -13,7 +21,7 @@ const Auth = () => {
             <label htmlFor='password'>Password</label>
             <input type='password' id='password' />
           </div>
-          <button>Login</button>
+          <button onClick={loginhnadler}>Login</button>
         </form>
       </section>
     </main>
